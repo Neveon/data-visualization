@@ -1,7 +1,5 @@
 "use strict";
 
-// import "./Navbar.css";
-
 const Navbar = () => {
     return (
         <div className="navbar navbar-default">
