@@ -1,5 +1,5 @@
-'use strict';
+"use strict";
 
-import LikeButton from './src/like_button.js';
+import Navbar from "./src//components/Navbar";
 
-ReactDOM.render(<LikeButton />, document.getElementById('root'));
+ReactDOM.render(<Navbar />, document.getElementById("root"));
