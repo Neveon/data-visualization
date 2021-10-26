@@ -1,5 +1,6 @@
+// This is where we render the app into the div#root
 "use strict";
 
-import Navbar from "./src/components/Navbar";
+import App from "./App";
 
-ReactDOM.render(<Navbar />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
