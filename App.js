@@ -2,7 +2,13 @@
 "use strict";
 
 import Navbar from "./src/components/navbar/Navbar";
+import Message from "./src/components/message/Message";
 
 export default () => {
-    return <Navbar />;
+    return (
+        <div className="container-fluid">
+            <Navbar />
+            <Message />
+        </div>
+    );
 };
