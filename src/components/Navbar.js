@@ -1,112 +1,113 @@
 "use strict";
 
-import "./Navbar.css"
+// import "./Navbar.css";
 
 const Navbar = () => {
     return (
-        <div class="menu">
-            <ul>
-                <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropbtn">
-                        File
-                    </a>
-                    <div class="dropdown-content">
-                        <label for="files" class="dropbtn">
-                            Load .CSV File
-                        </label>
-                        <input
-                            type="file"
-                            id="files"
-                            style={{ display: "none", backgroundColor: "gray" }}
-                            // onchange="parseFile()"
-                        ></input>
+        <div className="navbar navbar-default">
+            <div className="container-fluid">
+                <ul class="nav navbar-nav">
+                    {/* File Drop down */}
+                    <li class="dropdown">
                         <a
-                            href="javascript:void(0)"
-                            // onclick="loginDB()"
-                            class="dropbtn"
+                            href="#"
+                            class="dropdown-toggle"
+                            data-toggle="dropdown"
+                            role="button"
+                            aria-haspopup="true"
+                            aria-expanded="false"
                         >
-                            Login to DB
+                            File <span class="caret"></span>
                         </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">Load CSV File</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="#">Login to DB</a>
+                            </li>
+                            <li>
+                                <a href="#">Logout DB</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="#">Exit</a>
+                            </li>
+                        </ul>
+                    </li>
+                    {/* View Dropdown */}
+                    <li class="dropdown">
                         <a
-                            href="javascript:void(0)"
-                            // onclick="logoutDB()"
-                            class="dropbtn"
+                            href="#"
+                            class="dropdown-toggle"
+                            data-toggle="dropdown"
+                            role="button"
+                            aria-haspopup="true"
+                            aria-expanded="false"
                         >
-                            Log out of DB
+                            View <span class="caret"></span>
                         </a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropbtn">
-                        View
-                    </a>
-                    <div class="dropdown-content">
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">Line</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="#">Pie</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="#">Bar</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="#">Map</a>
+                            </li>
+                        </ul>
+                    </li>
+                    {/* Settings Dropdown */}
+                    <li class="dropdown">
                         <a
-                            href="javascript:void(0)"
-                            // onclick="changeView('Line')"
-                            class="dropbtn"
+                            href="#"
+                            class="dropdown-toggle"
+                            data-toggle="dropdown"
+                            role="button"
+                            aria-haspopup="true"
+                            aria-expanded="false"
                         >
-                            Line
+                            Settings <span class="caret"></span>
                         </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">User Info</a>
+                            </li>
+                        </ul>
+                    </li>
+                    {/* Help Dropdown */}
+                    <li class="dropdown">
                         <a
-                            href="javascript:void(0)"
-                            // onclick="changeView('Pie')"
-                            class="dropbtn"
+                            href="#"
+                            class="dropdown-toggle"
+                            data-toggle="dropdown"
+                            role="button"
+                            aria-haspopup="true"
+                            aria-expanded="false"
                         >
-                            Pie
+                            Help <span class="caret"></span>
                         </a>
-                        <a
-                            href="javascript:void(0)"
-                            // onclick="changeView('Bar')"
-                            class="dropbtn"
-                        >
-                            Bar
-                        </a>
-                        <a
-                            href="javascript:void(0)"
-                            // onclick="changeView('Map')"
-                            class="dropbtn"
-                        >
-                            Map
-                        </a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropbtn">
-                        Settings
-                    </a>
-                    <div class="dropdown-content">
-                        <a
-                            href="javascript:void(0)"
-                            // onclick="userInfo()"
-                            class="dropbtn"
-                        >
-                            User Info
-                        </a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropbtn">
-                        Help
-                    </a>
-                    <div class="dropdown-content">
-                        <a
-                            href="javascript:void(0)"
-                            // onclick="helpInfo()"
-                            class="dropbtn"
-                        >
-                            Info
-                        </a>
-                        <a
-                            href="javascript:void(0)"
-                            // onclick="helpClient()"
-                            class="dropbtn"
-                        >
-                            Client
-                        </a>
-                    </div>
-                </li>
-            </ul>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">Info</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="#">Client</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     );
 };
