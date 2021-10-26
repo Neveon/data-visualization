@@ -1,11 +1,11 @@
 // This is where we bring each component together into a single app
 "use strict";
 
-import Navbar from "./src/components/navbar/Navbar";
-import Message from "./src/components/message/Message";
-import DataSelection from "./src/components/visualization/DataSelection";
-import GraphDisplay from "./src/components/visualization/GraphDisplay";
-import Table from "./src/components/visualization/Table";
+import Navbar from "./components/navbar/Navbar";
+import Message from "./components/message/Message";
+import DataSelection from "./components/visualization/DataSelection";
+import GraphDisplay from "./components/visualization/GraphDisplay";
+import Table from "./components/visualization/Table";
 
 import "./App.css";
 
