@@ -1,7 +1,7 @@
 "use strict";
 
 const GraphDisplay = () => {
-    return <div className="container-fluid"></div>;
+    return <div>Graph Display</div>;
 };
 
 export default GraphDisplay;

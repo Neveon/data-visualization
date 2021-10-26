@@ -1,7 +1,7 @@
 "use strict";
 
 const DataSelection = () => {
-    return <div className="container-fluid"></div>;
+    return <div>DataSelection</div>;
 };
 
 export default DataSelection;
