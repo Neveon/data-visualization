@@ -1,6 +1,16 @@
 "use strict";
 
 const Navbar = () => {
+    // After the Navbar component renders, we can add effects to occur
+    React.useEffect(() => {
+        const uploadButton = document.getElementById("uploadButton");
+        const myInput = document.getElementById("myInput");
+
+        uploadButton.addEventListener("click", () => {
+            myInput.click();
+        });
+    }, []);
+
     return (
         <div className="navbar navbar-default">
             <div className="container-fluid">
@@ -19,14 +29,35 @@ const Navbar = () => {
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">Load CSV File</a>
+                                <a href="#" id="uploadButton">
+                                    Load CSV File
+                                </a>
+                                {/* To handle file */}
+                                <form
+                                    action="csv_upload.php"
+                                    style="display:none"
+                                >
+                                    <input id="myInput" type="file" />
+                                </form>
                             </li>
                             <li role="separator" class="divider"></li>
                             <li>
-                                <a href="#">Login to DB</a>
+                                <a
+                                    href="#logindb"
+                                    data-toggle="modal"
+                                    data-target="#logindb"
+                                >
+                                    Login to DB
+                                </a>
                             </li>
                             <li>
-                                <a href="#">Logout DB</a>
+                                <a
+                                    href="#logoutdb"
+                                    data-toggle="modal"
+                                    data-target="#logoutdb"
+                                >
+                                    Logout DB
+                                </a>
                             </li>
                             <li role="separator" class="divider"></li>
                             <li>
@@ -78,7 +109,13 @@ const Navbar = () => {
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">User Info</a>
+                                <a
+                                    href="#bannerformmodal"
+                                    data-toggle="modal"
+                                    data-target="#bannerformmodal"
+                                >
+                                    User Info
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -96,11 +133,23 @@ const Navbar = () => {
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">Info</a>
+                                <a
+                                    href="#bannerformmodal"
+                                    data-toggle="modal"
+                                    data-target="#bannerformmodal"
+                                >
+                                    Info
+                                </a>
                             </li>
                             <li role="separator" class="divider"></li>
                             <li>
-                                <a href="#">Client</a>
+                                <a
+                                    href="#bannerformmodal"
+                                    data-toggle="modal"
+                                    data-target="#bannerformmodal"
+                                >
+                                    Client
+                                </a>
                             </li>
                         </ul>
                     </li>
