@@ -12,14 +12,14 @@ const Table = () => {
     const jsonToHTML = (data) => {
         // Prevent this function running if data is the empty initialized JSON string
         if (data === JSON.stringify({})) {
-            console.log(data);
+            // console.log(data);
             return;
         }
         let parsedJSON = JSON.parse(data);
-        console.log(parsedJSON.length);
+        // console.log(parsedJSON.length);
 
         let headers = Object.keys(parsedJSON[0]); // Array of columns
-        console.log(headers);
+        // console.log(headers);
 
         let table = document.getElementById("table");
         // let csv = data[0].split("\n");
@@ -30,7 +30,7 @@ const Table = () => {
             html += "<th>" + headers[i];
         }
         // Building rows for each record
-        for (let i = 1; i < parsedJSON.length; i++) {
+        for (let i = 0; i < parsedJSON.length - 1; i++) {
             html += "<tr>";
             for (let j = 0; j < headers.length; j++) {
                 // console.log(parsedJSON[i][headers[j]]);
@@ -45,7 +45,7 @@ const Table = () => {
     // This effect runs when the this component renders
     //or when json data changes
     React.useEffect(() => {
-        console.log("This component's effect has ran");
+        // console.log("This component's effect has ran");
         jsonToHTML(json);
     }, [json]);
 
