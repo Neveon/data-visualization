@@ -1,4 +1,4 @@
-p.message {
+p#messageBox {
     margin: 0;
     margin-left: 5px;
     padding: 0;

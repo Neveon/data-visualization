@@ -4,11 +4,13 @@ import "./Message.css";
 
 const Message = () => {
     return (
-        <div class="container-fluid">
+        <div className="container-fluid">
             <div className="row">
-                <p className="message">
+                <p id="messageBox">
                     <span id="messageTitle">Message: </span>
-                    Any message would be outputted here.
+                    <span id="message">
+                        Any message would be outputted here.
+                    </span>
                 </p>
             </div>
             <hr />
