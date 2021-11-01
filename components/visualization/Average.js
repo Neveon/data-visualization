@@ -2,6 +2,9 @@ import { DataContext } from "../../App";
 
 // Component for average Living Wage for each state
 const Average = () => {
+    // State for managing the correct CSV file is uploaded
+    const [isCounties, setIsCounties] = React.useState(false);
+
     const { json } = React.useContext(DataContext);
 
     React.useEffect(() => {
@@ -13,6 +16,17 @@ const Average = () => {
         function drawChart() {
             let parsedJSON = JSON.parse(json);
             let headers = Object.keys(parsedJSON[0]); // Array of columns
+
+            if (
+                !headers.includes("state") ||
+                !headers.includes("county") ||
+                !headers.includes("living_wage")
+            ) {
+                setIsCounties(false);
+                return;
+            } else {
+                setIsCounties(true);
+            }
 
             // for state
             // for county
@@ -48,14 +62,6 @@ const Average = () => {
 
             let data = google.visualization.arrayToDataTable(avgArr);
 
-            // var data = google.visualization.arrayToDataTable([
-            //     ["Element", "Density"],
-            //     ["Copper", 8.94],
-            //     ["Silver", 10.49],
-            //     ["Gold", 19.3],
-            //     ["Platinum", 21.45],
-            // ]);
-
             var view = new google.visualization.DataView(data);
 
             var options = {
@@ -72,9 +78,24 @@ const Average = () => {
             );
             chart.draw(view, options);
         }
-    }, []);
+    }, [isCounties, json]);
 
-    return <div id="average"></div>;
+    return (
+        <>
+            {isCounties ? (
+                <div id="average"></div>
+            ) : (
+                <div>
+                    <br />
+                    <p>
+                        <b style={{ color: "red" }}>
+                            Please select correct CSV file
+                        </b>
+                    </p>
+                </div>
+            )}
+        </>
+    );
 };
 
 export default Average;
