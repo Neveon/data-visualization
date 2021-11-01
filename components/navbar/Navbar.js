@@ -1,4 +1,10 @@
 "use strict";
+// For Modal popup
+import Modal from "./Modal";
+
+// Functions
+import helpClient from "./functions/HelpClient";
+
 // For sending JSON to other components
 import { DataContext } from "../../App";
 
@@ -214,9 +220,9 @@ const Navbar = () => {
                             <li role="separator" className="divider"></li>
                             <li>
                                 <a
-                                    href="#bannerformmodal"
+                                    href="#client"
                                     data-toggle="modal"
-                                    data-target="#bannerformmodal"
+                                    data-target="#client"
                                 >
                                     Client
                                 </a>
@@ -224,6 +230,12 @@ const Navbar = () => {
                         </ul>
                     </li>
                 </ul>
+                <Modal
+                    target="client"
+                    title="Client"
+                    label="client-label"
+                    func={helpClient}
+                />
             </div>
         </div>
     );
