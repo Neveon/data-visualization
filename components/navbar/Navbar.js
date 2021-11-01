@@ -1,6 +1,72 @@
 "use strict";
 
 const Navbar = () => {
+    // Converting CSV to JSON format
+    const strToJson = (csv) => {
+        let lines = csv.split("\n");
+
+        let res = [];
+
+        // split on commas
+        let headers = lines[0].split(",");
+        for (let i = 0; i < headers[i].length; i++) {
+            // replace carriage returns
+            headers[i] = headers[i].replace("\r", "");
+        }
+
+        for (let i = 1; i < lines.length; i++) {
+            lines[i] = lines[i].replace("\r", "");
+            let obj = {}; // what will be our json obj
+            let values = lines[i].split(",");
+
+            for (let j = 0; j < headers.length; j++) {
+                obj[headers[j]] = values[j];
+            }
+            res.push(obj); // appending values
+        }
+        // Converts array of objects to JSON string
+        return JSON.stringify(res);
+    };
+
+    const numOfRecords = (csv) => {
+        // Number of rows minus the header row
+        let records = csv.split("\n").length - 1;
+        return records;
+    };
+
+    // For onChange of the input tag
+    const uploadCSV = () => {
+        let message = document.getElementById("message");
+        const input = document.getElementById("myInput");
+        if (input.files[0] === undefined) {
+            message.innerText =
+                "The file undefined. Please choose a valid file.";
+            return;
+        }
+        let filename = input.files[0].name;
+        if (filename.split(".")[filename.split(".").length - 1] != "csv") {
+            message.innerText = "The selected file is not formatted to '.csv'";
+            return;
+        } else {
+            //else is csv
+            let csv = input.files[0];
+            const reader = new FileReader();
+            reader.onload = function () {
+                const lines = reader.result;
+                message.innerHTML =
+                    "<br>Your file <b>" +
+                    filename +
+                    "</b><br> Contains " +
+                    numOfRecords(lines) +
+                    " number of records.";
+                console.log("stringToJSON: \n" + strToJson(lines));
+                //let JSONtext = strToJson(lines);
+                // csvToTable(lines);
+            };
+            reader.readAsText(csv);
+        }
+    };
+
     // After the Navbar component renders, we can add effects to occur
     React.useEffect(() => {
         const uploadButton = document.getElementById("uploadButton");
@@ -14,33 +80,33 @@ const Navbar = () => {
     return (
         <div className="navbar navbar-default">
             <div className="container-fluid">
-                <ul class="nav navbar-nav">
+                <ul className="nav navbar-nav">
                     {/* File Drop down */}
-                    <li class="dropdown">
+                    <li className="dropdown">
                         <a
                             href="#"
-                            class="dropdown-toggle"
+                            className="dropdown-toggle"
                             data-toggle="dropdown"
                             role="button"
                             aria-haspopup="true"
                             aria-expanded="false"
                         >
-                            File <span class="caret"></span>
+                            File <span className="caret"></span>
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul className="dropdown-menu">
                             <li>
                                 <a href="#" id="uploadButton">
                                     Load CSV File
                                 </a>
                                 {/* To handle file */}
-                                <form
-                                    action="csv_upload.php"
-                                    style="display:none"
-                                >
-                                    <input id="myInput" type="file" />
-                                </form>
+                                <input
+                                    id="myInput"
+                                    onChange={uploadCSV}
+                                    type="file"
+                                    style={{ display: "none" }}
+                                />
                             </li>
-                            <li role="separator" class="divider"></li>
+                            <li role="separator" className="divider"></li>
                             <li>
                                 <a
                                     href="#logindb"
@@ -59,55 +125,55 @@ const Navbar = () => {
                                     Logout DB
                                 </a>
                             </li>
-                            <li role="separator" class="divider"></li>
+                            <li role="separator" className="divider"></li>
                             <li>
                                 <a href="#">Exit</a>
                             </li>
                         </ul>
                     </li>
                     {/* View Dropdown */}
-                    <li class="dropdown">
+                    <li className="dropdown">
                         <a
                             href="#"
-                            class="dropdown-toggle"
+                            className="dropdown-toggle"
                             data-toggle="dropdown"
                             role="button"
                             aria-haspopup="true"
                             aria-expanded="false"
                         >
-                            View <span class="caret"></span>
+                            View <span className="caret"></span>
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul className="dropdown-menu">
                             <li>
                                 <a href="#">Line</a>
                             </li>
-                            <li role="separator" class="divider"></li>
+                            <li role="separator" className="divider"></li>
                             <li>
                                 <a href="#">Pie</a>
                             </li>
-                            <li role="separator" class="divider"></li>
+                            <li role="separator" className="divider"></li>
                             <li>
                                 <a href="#">Bar</a>
                             </li>
-                            <li role="separator" class="divider"></li>
+                            <li role="separator" className="divider"></li>
                             <li>
                                 <a href="#">Map</a>
                             </li>
                         </ul>
                     </li>
                     {/* Settings Dropdown */}
-                    <li class="dropdown">
+                    <li className="dropdown">
                         <a
                             href="#"
-                            class="dropdown-toggle"
+                            className="dropdown-toggle"
                             data-toggle="dropdown"
                             role="button"
                             aria-haspopup="true"
                             aria-expanded="false"
                         >
-                            Settings <span class="caret"></span>
+                            Settings <span className="caret"></span>
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul className="dropdown-menu">
                             <li>
                                 <a
                                     href="#bannerformmodal"
@@ -120,18 +186,18 @@ const Navbar = () => {
                         </ul>
                     </li>
                     {/* Help Dropdown */}
-                    <li class="dropdown">
+                    <li className="dropdown">
                         <a
                             href="#"
-                            class="dropdown-toggle"
+                            className="dropdown-toggle"
                             data-toggle="dropdown"
                             role="button"
                             aria-haspopup="true"
                             aria-expanded="false"
                         >
-                            Help <span class="caret"></span>
+                            Help <span className="caret"></span>
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul className="dropdown-menu">
                             <li>
                                 <a
                                     href="#bannerformmodal"
@@ -141,7 +207,7 @@ const Navbar = () => {
                                     Info
                                 </a>
                             </li>
-                            <li role="separator" class="divider"></li>
+                            <li role="separator" className="divider"></li>
                             <li>
                                 <a
                                     href="#bannerformmodal"
