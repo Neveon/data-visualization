@@ -137,7 +137,7 @@ const Navbar = () => {
                             </li>
                             <li role="separator" className="divider"></li>
                             <li>
-                                <a href="#">Exit</a>
+                                <a>Exit</a>
                             </li>
                         </ul>
                     </li>
@@ -230,6 +230,12 @@ const Navbar = () => {
                         </ul>
                     </li>
                 </ul>
+                {/* <Modal
+                    target="exit"
+                    title="Exit"
+                    label="exit-label"
+                    func={Exit}
+                /> */}
                 <Modal
                     target="client"
                     title="Client"
