@@ -186,9 +186,9 @@ const Navbar = () => {
                         <ul className="dropdown-menu">
                             <li>
                                 <a
-                                    href="#bannerformmodal"
+                                    href="#userinfo"
                                     data-toggle="modal"
-                                    data-target="#bannerformmodal"
+                                    data-target="#userinfo"
                                 >
                                     User Info
                                 </a>
@@ -210,9 +210,9 @@ const Navbar = () => {
                         <ul className="dropdown-menu">
                             <li>
                                 <a
-                                    href="#bannerformmodal"
+                                    href="#info"
                                     data-toggle="modal"
-                                    data-target="#bannerformmodal"
+                                    data-target="#info"
                                 >
                                     Info
                                 </a>
@@ -235,6 +235,20 @@ const Navbar = () => {
                     title="Client"
                     label="client-label"
                     func={helpClient}
+                />
+                <Modal
+                    target="info"
+                    title="Info"
+                    label="info-label"
+                    text={
+                        <p>
+                            <b>Name</b>: Neil Tellez
+                            <br />
+                            <b>Course</b>: 4745 - Data Visualization
+                            <br />
+                            <b>Project Due Date</b>: 11/01/2021
+                        </p>
+                    }
                 />
             </div>
         </div>
