@@ -2,6 +2,7 @@ import { DataContext } from "../../App";
 
 // Component for average Living Wage for each state
 const Population = () => {
+    const [isCounties, setIsCounties] = React.useState(false);
     const { json } = React.useContext(DataContext);
 
     React.useEffect(() => {
@@ -13,6 +14,18 @@ const Population = () => {
         function drawChart() {
             let parsedJSON = JSON.parse(json);
             let headers = Object.keys(parsedJSON[0]); // Array of columns
+
+            // Checking if csv data is correct for display
+            if (
+                !headers.includes("state") ||
+                !headers.includes("county") ||
+                !headers.includes("living_wage")
+            ) {
+                setIsCounties(false);
+                return;
+            } else {
+                setIsCounties(true);
+            }
 
             // for state
             // for county
@@ -51,19 +64,34 @@ const Population = () => {
                 title: "Population for each US State",
                 legend: { position: "none" },
                 explorer: { axis: "vertical" },
-                width: 1000,
+                width: 600,
                 height: 4000,
                 hAxis: { title: "Population" },
                 // bar: { groupWidth: "95%" },
             };
             var chart = new google.visualization.BarChart(
-                document.getElementById("average")
+                document.getElementById("pop")
             );
             chart.draw(view, options);
         }
-    }, []);
+    }, [json, isCounties]);
 
-    return <div id="average"></div>;
+    return (
+        <>
+            {isCounties ? (
+                <div id="pop"></div>
+            ) : (
+                <div>
+                    <br />
+                    <p>
+                        <b style={{ color: "red" }}>
+                            Please select correct CSV file
+                        </b>
+                    </p>
+                </div>
+            )}
+        </>
+    );
 };
 
 export default Population;

@@ -17,6 +17,7 @@ const Average = () => {
             let parsedJSON = JSON.parse(json);
             let headers = Object.keys(parsedJSON[0]); // Array of columns
 
+            // Checking if csv data is correct for display
             if (
                 !headers.includes("state") ||
                 !headers.includes("county") ||

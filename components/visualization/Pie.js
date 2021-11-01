@@ -2,6 +2,7 @@ import { DataContext } from "../../App";
 
 // Component for average Living Wage for each state
 const Pie = () => {
+    const [isCounties, setIsCounties] = React.useState(false);
     const { json } = React.useContext(DataContext);
 
     React.useEffect(() => {
@@ -13,6 +14,18 @@ const Pie = () => {
         function drawChart() {
             let parsedJSON = JSON.parse(json);
             let headers = Object.keys(parsedJSON[0]); // Array of columns
+
+            // Checking if csv data is correct for display
+            if (
+                !headers.includes("state") ||
+                !headers.includes("county") ||
+                !headers.includes("living_wage")
+            ) {
+                setIsCounties(false);
+                return;
+            } else {
+                setIsCounties(true);
+            }
 
             // for state
             // for county
@@ -116,7 +129,7 @@ const Pie = () => {
                 ["Other", otherTotal]
             );
 
-            console.log(arr);
+            // console.log(arr);
 
             arr.unshift(["Race", "Population"]);
 
@@ -138,9 +151,24 @@ const Pie = () => {
             );
             chart.draw(view, options);
         }
-    }, []);
+    }, [json, isCounties]);
 
-    return <div id="pie"></div>;
+    return (
+        <>
+            {isCounties ? (
+                <div id="pie"></div>
+            ) : (
+                <div>
+                    <br />
+                    <p>
+                        <b style={{ color: "red" }}>
+                            Please select correct CSV file
+                        </b>
+                    </p>
+                </div>
+            )}
+        </>
+    );
 };
 
 export default Pie;
