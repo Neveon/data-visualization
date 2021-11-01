@@ -28,7 +28,9 @@ const Modal = (props) => {
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div className="modal-body">{props.func()}</div>
+                        <div className="modal-body">
+                            {props.text ? props.text : props.func()}
+                        </div>
                         <div className="modal-footer">
                             <button
                                 type="button"
