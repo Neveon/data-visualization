@@ -1,6 +1,5 @@
 // Login form
 import { DataContext } from "../../../App";
-import $ from "../../../node_modules/jquery";
 
 const Login = () => {
     const [user, setUser] = React.useState("");
