@@ -15,7 +15,7 @@ export const DataContext = React.createContext();
 export default () => {
     // Single source where context is defined which starts out as an empty JSON string
     const [json, setJson] = React.useState(JSON.stringify({}));
-    const value = { json, setJson };
+    // const value = { json, setJson };
 
     // For User Info under settings
     // (uid, login, name, gender).
@@ -25,11 +25,11 @@ export default () => {
         name: null,
         gender: null,
     });
-    const userInfo = { login, setLogin };
+    const value = { json, setJson, login, setLogin };
 
     // Encapsulate the components with the DataContext to pass the context
     return (
-        <DataContext.Provider value={value} userInfo={userInfo}>
+        <DataContext.Provider value={value}>
             <div className="container-fluid">
                 <div className="row">
                     <Navbar />
