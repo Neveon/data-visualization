@@ -7,6 +7,7 @@ import helpClient from "./functions/HelpClient";
 
 // For sending JSON to other components
 import { DataContext } from "../../App";
+import Login from "./functions/Login";
 
 const Navbar = () => {
     // To update context with the csv file uploaded
@@ -119,9 +120,9 @@ const Navbar = () => {
                             <li role="separator" className="divider"></li>
                             <li>
                                 <a
-                                    href="#logindb"
+                                    href="#login"
                                     data-toggle="modal"
-                                    data-target="#logindb"
+                                    data-target="#login"
                                 >
                                     Login to DB
                                 </a>
@@ -230,12 +231,7 @@ const Navbar = () => {
                         </ul>
                     </li>
                 </ul>
-                {/* <Modal
-                    target="exit"
-                    title="Exit"
-                    label="exit-label"
-                    func={Exit}
-                /> */}
+                <Login />
                 <Modal
                     target="client"
                     title="Client"
