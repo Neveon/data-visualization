@@ -9,30 +9,40 @@ import Table from "./components/visualization/Table";
 
 import "./App.css";
 
-export default () => {
-    return (
-        <div className="container-fluid">
-            <div className="row">
-                <Navbar />
-            </div>
-            <div className="row">
-                <Message />
-            </div>
-            <div className="row justify-content-center">
-                <div className="col-xs-4">
-                    <DataSelection />
-                </div>
+// createContext to provide csv data for various components
+export const DataContext = React.createContext();
 
-                <div className="col-xs-8">
-                    <GraphDisplay />
+export default () => {
+    // Single source where context is defined which starts out as an empty JSON string
+    const [json, setJson] = React.useState(JSON.stringify({}));
+    const value = { json, setJson };
+
+    // Encapsulate the components with the DataContext to pass the context
+    return (
+        <DataContext.Provider value={value}>
+            <div className="container-fluid">
+                <div className="row">
+                    <Navbar />
+                </div>
+                <div className="row">
+                    <Message />
+                </div>
+                <div className="row justify-content-center">
+                    <div className="col-xs-4">
+                        <DataSelection />
+                    </div>
+
+                    <div className="col-xs-8">
+                        <GraphDisplay />
+                    </div>
+                </div>
+                <hr />
+                <div className="row justify-content-center">
+                    <div className="col-xs-12">
+                        <Table />
+                    </div>
                 </div>
             </div>
-            <hr />
-            <div className="row justify-content-center">
-                <div className="col-xs-12">
-                    <Table />
-                </div>
-            </div>
-        </div>
+        </DataContext.Provider>
     );
 };
