@@ -1,6 +1,11 @@
 "use strict";
+// For sending JSON to other components
+import { DataContext } from "../../App";
 
 const Navbar = () => {
+    // To update context with the csv file uploaded
+    const { setJson } = React.useContext(DataContext);
+
     // Converting CSV to JSON format
     const strToJson = (csv) => {
         let lines = csv.split("\n");
@@ -59,9 +64,8 @@ const Navbar = () => {
                     "</b><br> Contains " +
                     numOfRecords(lines) +
                     " number of records.";
-                console.log("stringToJSON: \n" + strToJson(lines));
-                //let JSONtext = strToJson(lines);
-                // csvToTable(lines);
+                // console.log("stringToJSON: \n" + strToJson(lines));
+                setJson(strToJson(lines));
             };
             reader.readAsText(csv);
         }
