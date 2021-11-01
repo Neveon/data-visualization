@@ -1,7 +1,12 @@
 "use strict";
+import { DataContext } from "../../App";
 
 const GraphDisplay = () => {
-    return <div>Graph Display</div>;
+    const { json } = React.useContext(DataContext);
+
+    // useEffect(() => {}, [json]);
+
+    return <div>{json === JSON.stringify({}) && "Please Load Data"}</div>;
 };
 
 export default GraphDisplay;
