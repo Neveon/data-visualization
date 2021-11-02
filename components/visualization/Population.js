@@ -63,9 +63,9 @@ const Population = () => {
             var options = {
                 title: "Population for each US State",
                 legend: { position: "none" },
-                explorer: { axis: "vertical" },
-                width: 600,
-                height: 4000,
+                // explorer: { axis: "vertical" },
+                width: 800,
+                height: 3000,
                 hAxis: { title: "Population" },
                 // bar: { groupWidth: "95%" },
             };

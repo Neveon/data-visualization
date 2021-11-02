@@ -68,9 +68,9 @@ const Average = () => {
             var options = {
                 title: "Average Living Wage for a Single Adult per State",
                 legend: { position: "none" },
-                explorer: { axis: "vertical" },
-                width: 1000,
-                height: 4000,
+                // explorer: { axis: "vertical" },
+                width: 800,
+                height: 3000,
                 hAxis: { title: "US Dollars ($)" },
                 // bar: { groupWidth: "95%" },
             };
