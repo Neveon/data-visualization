@@ -30,71 +30,54 @@ const Pie = () => {
             // for state
             // for county
             // get population of each race
-            // race pop. / population = AVERAGE FOR country
             // return each race % of the entire country population
             for (let i = 0; i < parsedJSON.length - 1; i++) {
                 // console.log(parsedJSON);
                 if (!(parsedJSON[i]["state"] in avgs)) {
+                    // init state if the state doesnt exist in avgs
                     avgs[parsedJSON[i]["state"]] = {};
-                    avgs[parsedJSON[i]["state"]]["population_total"] =
+
+                    // avgs[parsedJSON[i]["state"]]["population_total"]
+                    let county_pop =
                         parseInt(parsedJSON[i]["male"]) +
                         parseInt(parsedJSON[i]["female"]);
+
                     // White
                     avgs[parsedJSON[i]["state"]]["white"] =
-                        parseInt(
-                            avgs[parsedJSON[i]["state"]]["population_total"]
-                        ) *
+                        county_pop *
                         parseFloat(parsedJSON[i]["non_hispanic_white_alone"]);
                     // Black
                     avgs[parsedJSON[i]["state"]]["black"] =
-                        parseInt(
-                            avgs[parsedJSON[i]["state"]]["population_total"]
-                        ) * parseFloat(parsedJSON[i]["black_alone"]);
+                        county_pop * parseFloat(parsedJSON[i]["black_alone"]);
                     // Hispanic
                     avgs[parsedJSON[i]["state"]]["hispanic"] =
-                        parseInt(
-                            avgs[parsedJSON[i]["state"]]["population_total"]
-                        ) * parseFloat(parsedJSON[i]["hispanic"]);
+                        county_pop * parseFloat(parsedJSON[i]["hispanic"]);
                     // Asian
                     avgs[parsedJSON[i]["state"]]["asian"] =
-                        parseInt(
-                            avgs[parsedJSON[i]["state"]]["population_total"]
-                        ) * parseFloat(parsedJSON[i]["asian_alone"]);
+                        county_pop * parseFloat(parsedJSON[i]["asian_alone"]);
                     // Other
                     avgs[parsedJSON[i]["state"]]["other"] =
-                        parseInt(
-                            avgs[parsedJSON[i]["state"]]["population_total"]
-                        ) * parseFloat(parsedJSON[i]["other"]);
+                        county_pop * parseFloat(parsedJSON[i]["other"]);
                 } else {
-                    avgs[parsedJSON[i]["state"]]["population_total"] +=
+                    let county_pop =
                         parseInt(parsedJSON[i]["male"]) +
                         parseInt(parsedJSON[i]["female"]);
                     // White
                     avgs[parsedJSON[i]["state"]]["white"] +=
-                        parseInt(
-                            avgs[parsedJSON[i]["state"]]["population_total"]
-                        ) *
+                        county_pop *
                         parseFloat(parsedJSON[i]["non_hispanic_white_alone"]);
                     // Black
                     avgs[parsedJSON[i]["state"]]["black"] +=
-                        parseInt(
-                            avgs[parsedJSON[i]["state"]]["population_total"]
-                        ) * parseFloat(parsedJSON[i]["black_alone"]);
+                        county_pop * parseFloat(parsedJSON[i]["black_alone"]);
                     // Hispanic
                     avgs[parsedJSON[i]["state"]]["hispanic"] +=
-                        parseInt(
-                            avgs[parsedJSON[i]["state"]]["population_total"]
-                        ) * parseFloat(parsedJSON[i]["hispanic"]);
+                        county_pop * parseFloat(parsedJSON[i]["hispanic"]);
                     // Asian
                     avgs[parsedJSON[i]["state"]]["asian"] +=
-                        parseInt(
-                            avgs[parsedJSON[i]["state"]]["population_total"]
-                        ) * parseFloat(parsedJSON[i]["asian_alone"]);
+                        county_pop * parseFloat(parsedJSON[i]["asian_alone"]);
                     // Other
                     avgs[parsedJSON[i]["state"]]["other"] +=
-                        parseInt(
-                            avgs[parsedJSON[i]["state"]]["population_total"]
-                        ) * parseFloat(parsedJSON[i]["other"]);
+                        county_pop * parseFloat(parsedJSON[i]["other"]);
                 }
             }
 
@@ -138,11 +121,11 @@ const Pie = () => {
             var view = new google.visualization.DataView(data);
 
             var options = {
-                title: "% of each Race in the United States",
+                title: "Demographics in the United States",
                 // legend: { position: "none" },
                 // explorer: { axis: "vertical" },
-                width: 900,
-                height: 500,
+                width: 1000,
+                height: 600,
                 // hAxis: { title: "Population" },
                 // bar: { groupWidth: "95%" },
             };
