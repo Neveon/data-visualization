@@ -25,7 +25,10 @@ export default () => {
         name: null,
         gender: null,
     });
-    const value = { json, setJson, login, setLogin };
+
+    // For managing View button (Line, Pie, Bar, Map?)
+    const [view, setView] = React.useState("");
+    const value = { json, setJson, login, setLogin, view, setView };
 
     // Encapsulate the components with the DataContext to pass the context
     return (

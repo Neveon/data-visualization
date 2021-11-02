@@ -10,8 +10,10 @@ import { DataContext } from "../../App";
 import Login from "./functions/Login";
 
 const Navbar = () => {
-    // To update context with the csv file uploaded
-    const { setJson } = React.useContext(DataContext);
+    // Update view state to update view context
+    const [navView, setNavView] = React.useState("");
+    // To update context with the csv file uploaded and view context
+    const { setJson, setView } = React.useContext(DataContext);
 
     // Converting CSV to JSON format
     const strToJson = (csv) => {
@@ -78,15 +80,20 @@ const Navbar = () => {
         }
     };
 
+    const handleUpload = () => {
+        document.getElementById("myInput").click();
+    };
+
+    const handleView = (e) => {
+        // console.log(e.target.innerText);
+        setNavView(e.target.innerText);
+    };
+
     // After the Navbar component renders, we can add effects to occur
     React.useEffect(() => {
-        const uploadButton = document.getElementById("uploadButton");
-        const myInput = document.getElementById("myInput");
-
-        uploadButton.addEventListener("click", () => {
-            myInput.click();
-        });
-    }, []);
+        console.log("Navbar rendered");
+        setView(navView); // Change view context with view state
+    }, [navView]);
 
     return (
         <div className="navbar navbar-default">
@@ -106,7 +113,11 @@ const Navbar = () => {
                         </a>
                         <ul className="dropdown-menu">
                             <li>
-                                <a href="#" id="uploadButton">
+                                <a
+                                    href="#"
+                                    id="uploadButton"
+                                    onClick={handleUpload}
+                                >
                                     Load CSV File
                                 </a>
                                 {/* To handle file */}
@@ -156,19 +167,19 @@ const Navbar = () => {
                         </a>
                         <ul className="dropdown-menu">
                             <li>
-                                <a href="#">Line</a>
+                                <a onClick={handleView}>Line</a>
                             </li>
                             <li role="separator" className="divider"></li>
                             <li>
-                                <a href="#">Pie</a>
+                                <a onClick={handleView}>Pie</a>
                             </li>
                             <li role="separator" className="divider"></li>
                             <li>
-                                <a href="#">Bar</a>
+                                <a onClick={handleView}>Bar</a>
                             </li>
                             <li role="separator" className="divider"></li>
                             <li>
-                                <a href="#">Map</a>
+                                <a onClick={handleView}>Map</a>
                             </li>
                         </ul>
                     </li>
