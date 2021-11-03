@@ -55,7 +55,7 @@ const DataSelection = () => {
                         className="btn btn-dark"
                         onClick={pieClick}
                     >
-                        Pie
+                        Demographics Pie
                     </button>
                     <br />
                     <br />

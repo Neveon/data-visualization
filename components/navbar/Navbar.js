@@ -91,7 +91,7 @@ const Navbar = () => {
 
     // After the Navbar component renders, we can add effects to occur
     React.useEffect(() => {
-        console.log("Navbar rendered");
+        // console.log("Navbar rendered");
         setView(navView); // Change view context with view state
     }, [navView]);
 
@@ -167,19 +167,27 @@ const Navbar = () => {
                         </a>
                         <ul className="dropdown-menu">
                             <li>
-                                <a onClick={handleView}>Line</a>
+                                <a href="#" onClick={handleView}>
+                                    Line
+                                </a>
                             </li>
                             <li role="separator" className="divider"></li>
                             <li>
-                                <a onClick={handleView}>Pie</a>
+                                <a href="#" onClick={handleView}>
+                                    Pie
+                                </a>
                             </li>
                             <li role="separator" className="divider"></li>
                             <li>
-                                <a onClick={handleView}>Bar</a>
+                                <a href="#" onClick={handleView}>
+                                    Bar
+                                </a>
                             </li>
                             <li role="separator" className="divider"></li>
                             <li>
-                                <a onClick={handleView}>Map</a>
+                                <a href="#" onClick={handleView}>
+                                    Map
+                                </a>
                             </li>
                         </ul>
                     </li>

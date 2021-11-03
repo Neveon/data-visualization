@@ -41,17 +41,17 @@ export default () => {
                     <Message />
                 </div>
                 <div className="row justify-content-center">
-                    <div className="col-xs-4">
+                    <div className="col-md-8">
                         <DataSelection />
                     </div>
 
-                    <div className="col-xs-8">
+                    <div className="col-md-4">
                         <GraphDisplay />
                     </div>
                 </div>
                 <hr />
                 <div className="row justify-content-center">
-                    <div className="col-xs-12">
+                    <div className="col-md-12">
                         <Table />
                     </div>
                 </div>
