@@ -1,4 +1,4 @@
 # data-visualization
-Data Visualization for each county in the US. For CPS 4745 Project.
+Data Visualization example for each county in the US. For CPS 4745 Project 1.
 
-This project is a work in progress..
+Check out this [Jupyter notebook](https://github.com/Neveon/data-visualization/blob/main/explore_json.ipynb) for information of the data.
